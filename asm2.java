@@ -25,6 +25,8 @@ public class asm2 {
                 String tempTok = token.nextToken();
                 //count characters
                 charactersC += tempTok.length();
+                //count emoticon
+                emoticonC += countEmoticon(tempTok);
                 //count palindromes
                 palindromeC += countPalin(tempTok);
                 //count token
@@ -37,9 +39,10 @@ public class asm2 {
         // runtimer
         long endTime   = System.nanoTime();
         NumberFormat formatter = new DecimalFormat("#0.00");
-        totalTime = formatter.format((endTime - startTime) / 200005000d);
+        totalTime = formatter.format((endTime - startTime) / 20000000d);
         // output
         System.out.println(toStrings());
+        scan.close();
         Success();
     }
 
@@ -81,6 +84,28 @@ public class asm2 {
          
         return count;
     }
+
+    //emoticon
+    static boolean checkEmoticon(String str){
+        //list of all emoticon
+        String[] emoticons = {":D",":)","c:"};
+        //
+        for (int i=0; i<emoticons.length; i++){
+            if(str.equals(emoticons[i])){
+                System.out.println(str);
+                return true;
+            }
+        }
+        return false;
+    }
+    static int countEmoticon(String str){
+        int count = 0;
+        if (checkEmoticon(str))
+            count++;    
+        return count;
+    }
+    
+    //
 
 ////// output
 
