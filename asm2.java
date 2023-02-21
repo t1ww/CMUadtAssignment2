@@ -16,8 +16,7 @@ public class asm2 {
     public static void main(String[] args) throws FileNotFoundException {
         long startTime = System.nanoTime();
         //
-        File f = new File("input1.txt");
-        Scanner scan = new Scanner(f);
+        Scanner scan = new Scanner(new File("input1.txt"));
         while(scan.hasNextLine()){
             String dataLine = scan.nextLine();
             StringTokenizer token = new StringTokenizer(dataLine, " ");
@@ -26,9 +25,11 @@ public class asm2 {
             while(token.hasMoreTokens()){
                 String tempTok = token.nextToken();
                 //count emoticon
-                emoticonC += countEmoticon(tempTok);
+                if (checkEmoticon(tempTok))
+                    emoticonC++;
                 //count palindromes
-                palindromeC += countPalin(tempTok);
+                if (checkPalin(tempTok))
+                    palindromeC++;
                 //count token
                 tokenC++;
             }
@@ -43,7 +44,9 @@ public class asm2 {
         // output
         System.out.println(toStrings());
         scan.close();
-        Success();
+
+//program end
+           System.out.println("\n/ terminated successfully");
     }
 
 ////// METHODS
@@ -58,38 +61,12 @@ public class asm2 {
               return false;      
         return true;
     }
-     
-    // Function to count palindrome words
-    static int countPalin(String str)
-    {       
-        // to check last word for palindrome
-        str = str + " ";
-         
-        // to store each word
-        String word = "";
-        int count = 0;
-        for (int i = 0; i < str.length(); i++)
-        {
-            char ch = str.charAt(i);
-             
-            // extracting each word
-            if (ch != ' ')
-                word = word + ch;
-            else {
-                if (checkPalin(word))
-                    count++;
-                word = "";
-            }
-        }
-         
-        return count;
-    }
 
     //emoticon
     static boolean checkEmoticon(String str){
         //list of all emoticon
         String[] emoticons = {":D","D:",":)","):","(:",":(",">:",":>",":<","<:","c:",":c","C:",":C","xd","xD","XD",":o",":O",":0",
-            ":P",";D",";)","c;","<3"
+        ":P",";D",";)","c;","<3"
         };
         //
         for (int i=0; i<emoticons.length; i++){
@@ -99,13 +76,6 @@ public class asm2 {
         }
         return false;
     }
-    static int countEmoticon(String str){
-        int count = 0;
-        if (checkEmoticon(str))
-            count++;    
-        return count;
-    }
-    
     //
 
 ////// output
@@ -119,11 +89,5 @@ public class asm2 {
                 "The longest and average token size token" + "\n" +
                 "Total time to execute this program " + totalTime + " secs"
         ;
-    }
-    public static void Success(){
-        //program end
-        System.out.println("\n///////////////////////////////////////");
-        System.out.println("/////////program terminated successfully");
-        System.out.println("//////////////////////////////////////////");
     }
 }
