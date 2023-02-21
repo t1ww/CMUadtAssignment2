@@ -21,10 +21,10 @@ public class asm2 {
         while(scan.hasNextLine()){
             String dataLine = scan.nextLine();
             StringTokenizer token = new StringTokenizer(dataLine, " ");
+            //count characters
+            charactersC += dataLine.length();
             while(token.hasMoreTokens()){
                 String tempTok = token.nextToken();
-                //count characters
-                charactersC += tempTok.length();
                 //count emoticon
                 emoticonC += countEmoticon(tempTok);
                 //count palindromes
@@ -88,11 +88,12 @@ public class asm2 {
     //emoticon
     static boolean checkEmoticon(String str){
         //list of all emoticon
-        String[] emoticons = {":D",":)","c:"};
+        String[] emoticons = {":D","D:",":)","):","(:",":(",">:",":>",":<","<:","c:",":c","C:",":C","xd","xD","XD",":o",":O",":0",
+            ":P",";D",";)","c;","<3"
+        };
         //
         for (int i=0; i<emoticons.length; i++){
             if(str.equals(emoticons[i])){
-                System.out.println(str);
                 return true;
             }
         }
