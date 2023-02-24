@@ -1,3 +1,10 @@
+/*
+ * @author Narongchai Rongthong
+ * 652115013
+ * written on 17/02/2022
+ * https://github.com/t1ww
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
