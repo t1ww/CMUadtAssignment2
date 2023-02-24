@@ -14,7 +14,7 @@ public class asm2 {
     static int newLineC = 0;
     static String totalTime;
     public static void main(String[] args) throws FileNotFoundException {
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
         //
         Scanner scan = new Scanner(new File("input1.txt"));
         while(scan.hasNextLine()){
@@ -38,9 +38,9 @@ public class asm2 {
             newLineC++;
         }
         // runtimer
-        long endTime   = System.nanoTime();
-        NumberFormat formatter = new DecimalFormat("#0.00");
-        totalTime = formatter.format((endTime - startTime) / 20000000d);
+        long endTime   = System.currentTimeMillis();
+        NumberFormat formatter = new DecimalFormat("#0.0");
+        totalTime = formatter.format((endTime - startTime) /10d);
         // output
         System.out.println(toStrings());
         scan.close();
