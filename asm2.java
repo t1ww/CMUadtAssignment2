@@ -20,6 +20,7 @@ public class asm2 {
     static int emoticonC = 0;
     static int newLineC = 0;
     static String totalTime;
+    static int longestToken = 0;
     public static void main(String[] args) throws FileNotFoundException {
         long startTime = System.currentTimeMillis();
         //
@@ -27,8 +28,6 @@ public class asm2 {
         while(scan.hasNextLine()){
             String dataLine = scan.nextLine();
             StringTokenizer token = new StringTokenizer(dataLine, " ");
-            //count characters
-            charactersC += dataLine.length();
             while(token.hasMoreTokens()){
                 String tempTok = token.nextToken();
                 //count emoticon
@@ -37,6 +36,10 @@ public class asm2 {
                 //count palindromes
                 if (checkPalin(tempTok))
                     palindromeC++;
+                //count characters
+                charactersC += tempTok.length();
+                //longest token
+                longestToken = (tempTok.length() > longestToken)? tempTok.length() : longestToken;
                 //count token
                 tokenC++;
             }
@@ -88,12 +91,14 @@ public class asm2 {
 ////// output
 
     public static String toStrings(){
+        int average = (charactersC/tokenC);
         return  "Total # Character count: " + charactersC + "\n" +
                 "Total # Palindrome found: " + palindromeC + "\n" +
                 "Total Number of tokens: " + tokenC +"\n" +
                 "Total Number of emoticon: " + emoticonC + "\n" +
                 "Total # of new line: " + newLineC + "\n" +
-                "The longest and average token size token" + "\n" +
+                "The longest token = " + longestToken + "\n" +
+                "average token size token = " + average + "\n" +
                 "Total time to execute this program " + totalTime + " secs"
         ;
     }
