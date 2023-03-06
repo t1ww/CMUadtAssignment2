@@ -75,7 +75,7 @@ public class asm2 {
     //emoticon
     static boolean checkEmoticon(String str){
         //list of all emoticon
-        String[] emoticons = {":D","D:",":)","):","(:",":(",">:",":>",":<","<:","c:",":c","C:",":C","xd","xD","XD",":o",":O",":0",
+        String[] emoticons = {":D","D:",":)","<:","c:",":c","C:",":C","xd","xD","XD",":o",":O",":0",
         ":P",";D",";)","c;","<3"
         };
         //
