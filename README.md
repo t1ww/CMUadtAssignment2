@@ -2,7 +2,7 @@
  reading files and counting stuffs
  
 # How to use
-    27 Scanner scan = new Scanner(new File("input1.txt")); <- put file path here at "input1.txt"
+      line 27 Scanner scan = new Scanner(new File("input1.txt")); <- put file path here at "input1.txt"
 
 # Output Example
       Total # Character count: 1916
